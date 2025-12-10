@@ -675,7 +675,7 @@ document.getElementById('payBtn')?.addEventListener('click', () => {
 });
 
 document.getElementById('billsBtn')?.addEventListener('click', () => {
-  window.location.href = 'bills.html';
+  window.location.href = '/bills';
 });
 
 document.getElementById('addPayeeBtn')?.addEventListener('click', () => {
@@ -722,7 +722,7 @@ document.getElementById('cardsBtn')?.addEventListener('click', () => {
 document.getElementById('toggleBalancesBtn')?.addEventListener('click', toggleBalances);
 
 document.getElementById('notificationBtn')?.addEventListener('click', () => {
-  window.location.href = 'notifications.html';
+  window.location.href = '/notifications';
 });
 
 document.getElementById('chatBtn')?.addEventListener('click', () => {
