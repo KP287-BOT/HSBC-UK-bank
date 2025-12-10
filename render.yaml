@@ -2,9 +2,5 @@ services:
   - type: web
     name: hsbc-uk-bank
     env: static
-    buildCommand: echo "No build required"
-    staticPublishPath: .
-    routes:
-      - type: rewrite
-        source: /*
-        destination: /index.html
+    buildCommand: mkdir -p build && cp -r * build/ 2>/dev/null || true
+    staticPublishPath: ./build
