@@ -460,9 +460,9 @@ function handleTransfer(accountId) {
       <form id="transferForm">
         <div class="form-group">
           <label class="form-label">From</label>
-          <select class="form-select" disabled>
-            <option>${account.name} - ${formatCurrency(account.balance)}</option>
-          </select>
+          <div class="form-select" style="background: #F3F4F6; cursor: not-allowed; color: #6B7280;">
+            ${account.name} - ${formatCurrency(account.balance)}
+          </div>
         </div>
         
         <div class="form-group">
@@ -525,15 +525,17 @@ function submitTransfer(fromAccountId) {
 }
 
 function handlePay(accountId) {
+  const account = accountsData.find(acc => acc.id === accountId);
+  
   openModal(
     'Make a Payment',
     `
       <form id="paymentForm">
         <div class="form-group">
           <label class="form-label">From</label>
-          <select class="form-select" disabled>
-            <option>${accountsData.find(acc => acc.id === accountId).name}</option>
-          </select>
+          <div class="form-select" style="background: #F3F4F6; cursor: not-allowed; color: #6B7280;">
+            ${account.name}
+          </div>
         </div>
         
         <div class="form-group">
@@ -737,10 +739,13 @@ document.getElementById('userMenuBtn')?.addEventListener('click', (e) => {
   
   const dropdown = document.createElement('div');
   dropdown.id = 'userDropdownMenu';
+  
+  // Position dropdown relative to the user menu button
+  const isMobile = window.innerWidth <= 768;
   dropdown.style.cssText = `
-    position: absolute;
-    top: 70px;
-    right: 20px;
+    position: fixed;
+    top: 60px;
+    right: ${isMobile ? '10px' : '20px'};
     background: white;
     border: 1px solid #E5E7EB;
     border-radius: 12px;
@@ -820,7 +825,26 @@ document.getElementById('addGoalBtn')?.addEventListener('click', () => {
 // INITIALIZATION
 // ============================================
 
+function updateGreeting() {
+  const hour = new Date().getHours();
+  let greeting;
+  
+  if (hour < 12) {
+    greeting = 'Good morning';
+  } else if (hour < 18) {
+    greeting = 'Good afternoon';
+  } else {
+    greeting = 'Good evening';
+  }
+  
+  const greetingElement = document.getElementById('greetingText');
+  if (greetingElement) {
+    greetingElement.textContent = `${greeting}, Julie`;
+  }
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  updateGreeting();
   renderAccounts();
   renderSavingsGoals();
   renderTransactions();
