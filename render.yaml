@@ -1,6 +1,0 @@
-services:
-  - type: web
-    name: hsbc-uk-bank
-    env: static
-    buildCommand: mkdir -p build && cp -r * build/ 2>/dev/null || true
-    staticPublishPath: ./build
