@@ -1453,7 +1453,7 @@ body {
   }
   
   .menu-button {
-    display: flex;
+    display: none;
   }
   
   .main-content {
@@ -1488,11 +1488,11 @@ body {
   }
   
   .bottom-nav {
-    display: flex;
+    display: none;
   }
   
   .chat-button {
-    bottom: 80px;
+    bottom: 20px;
   }
   
   #toast-container {
